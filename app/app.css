@@ -1,0 +1,540 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-react-buttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-react-grids/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-react-navigations/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-react-splitbuttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-react-dropdowns/styles/material.css";
+@import "tailwindcss";
+
+@theme {
+  --font-figtree: "Figtree", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --color-dark-100: #1f1f36;
+  --color-dark-200: #141627;
+  --color-dark-300: #101828;
+  --color-dark-400: #2e2c48;
+  --color-gray-100: #7f7e83;
+  --color-gray-200: #eaecf0;
+  --color-gray-500: #667085;
+  --color-gray-700: #344054;
+  --color-primary-50: #e9f3fb;
+  --color-primary-100: #256ff1;
+  --color-primary-500: #175cd3;
+  --color-light-100: #ecf2ef;
+  --color-light-200: #f9fbfc;
+  --color-light-300: #f2f4f7;
+  --color-light-400: #ebeeed;
+  --color-light-500: #e3f1ff;
+  --color-success-50: #ecfdf3;
+  --color-success-500: #12b76a;
+  --color-success-700: #027a48;
+  --color-pink-50: #f7edf6;
+  --color-pink-500: #c11574;
+  --color-navy-50: #f0f9ff;
+  --color-navy-500: #026aa2;
+  --color-red-500: #b93815;
+  --color-red-50: #fff4ed;
+  --color-red-100: #ff543d;
+
+  --background-image-auth: url("/assets/images/auth-img.webp");
+  --background-image-hero: url("/assets/images/hero-img.png");
+  --background-image-card-1: url("/assets/images/card-img-1.png");
+  --background-image-card-2: url("/assets/images/card-img-2.png");
+  --background-image-card-3: url("/assets/images/card-img-3.png");
+  --background-image-card-4: url("/assets/images/card-img-4.png");
+  --background-image-card-5: url("/assets/images/card-img-5.png");
+  --background-image-card-6: url("/assets/images/card-img-6.png");
+  --background-image-linear100: linear-gradient(
+    105deg,
+    rgba(207, 241, 255, 0.8) 14.17%,
+    rgba(255, 255, 255, 0) 54.71%
+  );
+  --background-image-linear200: linear-gradient(
+    39deg,
+    rgba(3, 3, 3, 0.54) -3.66%,
+    rgba(6, 6, 6, 0) 45.57%
+  );
+  --shadow-100: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
+    0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+  --shadow-200: 0px 12px 16px -4px rgba(16, 24, 40, 0.1),
+    0px 4px 20px -2px rgba(16, 24, 40, 0.2);
+  --shadow-300: 0px 2px 30px 0px rgba(0, 0, 0, 0.05);
+  --shadow-400: 0px 2px 6px 0px rgba(13, 10, 44, 0.08);
+  --shadow-500: 0px 12px 16px -4px rgba(16, 24, 40, 0.1);
+  --radius-20: 20px;
+}
+
+@layer components {
+  .error {
+    @apply font-medium text-red-500 text-base text-center;
+  }
+  .all-users {
+    @apply flex flex-col gap-10 w-full min-h-screen;
+  }
+
+  .stats-card {
+    @apply flex flex-col gap-6 bg-white shadow-400 p-6 rounded-20 text-dark-100;
+
+    .content {
+      @apply flex flex-row xl:flex-row md:flex-col-reverse justify-between xl:items-center gap-3;
+    }
+  }
+
+  .sign-in-card {
+    @apply flex flex-col bg-white px-6 py-10 border border-light-100 rounded-[20px] w-full md:max-w-[510px];
+    header {
+      @apply flex justify-center items-center gap-1.5;
+    }
+    article {
+      @apply flex flex-col gap-3 mt-9 mb-[30px];
+    }
+  }
+  .info-pill {
+    @apply flex items-center gap-1.5;
+    img {
+      @apply size-5;
+    }
+    figcaption {
+      @apply font-normal text-gray-100 text-sm md:text-lg truncate;
+    }
+  }
+
+  .trip {
+    @apply flex flex-col gap-10 pb-20;
+    section {
+      @apply flex flex-col gap-5 mt-2.5;
+    }
+  }
+  .auth {
+    @apply flex bg-auth bg-cover bg-no-repeat w-full h-screen;
+  }
+
+  .payment-success {
+    @apply flex flex-col justify-center items-center gap-10 pb-20 h-screen;
+    section {
+      @apply flex flex-col justify-between items-center gap-5 w-full;
+      article {
+        @apply flex flex-col justify-center items-center gap-3.5 w-full md:max-w-[488px];
+        h1 {
+          @apply font-semibold text-dark-100 text-xl md:text-3xl;
+        }
+        p {
+          @apply font-normal text-gray-100 text-sm md:text-lg text-center;
+        }
+      }
+    }
+  }
+
+  .trip-form {
+    @apply flex flex-col gap-6 bg-white shadow-100 py-6 border border-light-200 rounded-xl;
+    div {
+      @apply relative flex flex-col gap-2.5 px-6 w-full;
+    }
+    label {
+      @apply font-normal text-gray-100 text-sm;
+    }
+  }
+
+  .travel-hero {
+    @apply bg-hero bg-origin-content bg-cover;
+
+    div {
+      @apply flex flex-col bg-linear100 bg-cover;
+
+      section {
+        @apply flex flex-col justify-center items-start gap-6 py-48;
+
+        article {
+          @apply flex flex-col gap-3.5 w-full md:max-w-[520px];
+          p {
+            @apply font-normal text-dark-400 text-lg;
+          }
+        }
+      }
+    }
+  }
+  .travel-featured {
+    @apply flex flex-col lg:flex-row gap-[30px] h-2/3 lg:h-1/2;
+  }
+
+  .travel-detail {
+    @apply flex flex-col gap-10 pb-20;
+
+    .travel-div {
+      @apply flex lg:flex-row flex-col gap-10;
+    }
+
+    .back-link {
+      @apply flex justify-center items-center gap-2.5 bg-white shadow-500 px-[30px] py-3 border-gray-200 rounded-lg w-[240px] h-[50px];
+
+      img {
+        @apply size-[17px];
+      }
+
+      span {
+        @apply font-semibold text-dark-100 text-base;
+      }
+    }
+
+    .container {
+      @apply flex flex-col gap-9 mt-2.5;
+
+      header {
+        @apply flex flex-col gap-6 overflow-hidden;
+
+        div {
+          @apply flex items-center gap-5;
+        }
+      }
+
+      .gallery {
+        @apply gap-7 grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 mt-1;
+      }
+    }
+
+    .visit {
+      @apply flex flex-col gap-5;
+
+      div {
+        @apply flex flex-col gap-4;
+
+        h3 {
+          @apply font-semibold text-dark-400 text-base md:text-xl;
+        }
+
+        ul {
+          @apply flex flex-col gap-3;
+          li {
+            @apply flex justify-between gap-7 font-normal text-dark-400 text-sm md:text-lg !list-disc;
+          }
+        }
+      }
+    }
+
+    .itinerary {
+      @apply flex flex-col gap-9;
+
+      li {
+        @apply flex flex-col gap-4;
+
+        h3 {
+          @apply font-semibold text-dark-400 text-base md:text-xl;
+        }
+
+        ul {
+          @apply flex flex-col gap-7 sm:gap-3;
+
+          li {
+            @apply flex flex-row max-sm:flex-col justify-between gap-3 sm:gap-7 font-normal text-dark-400 text-sm md:text-lg !list-disc;
+
+            span {
+              @apply w-[90px];
+            }
+          }
+        }
+      }
+    }
+    .title {
+      @apply flex justify-between gap-5;
+
+      article {
+        @apply flex flex-col gap-4;
+
+        h3 {
+          @apply font-semibold text-dark-100 text-xl md:text-3xl;
+        }
+
+        p {
+          @apply font-normal text-gray-100 text-base md:text-2xl;
+        }
+      }
+
+      h2 {
+        @apply font-normal text-dark-100 text-sm md:text-xl;
+      }
+    }
+  }
+  .trip-card {
+    @apply relative flex-col bg-white shadow-300 rounded-[20px] w-full;
+    img {
+      @apply rounded-t-xl w-full h-[160px] object-cover aspect-video;
+    }
+    article {
+      @apply flex flex-col gap-3 mt-4 pr-3.5 pl-[18px];
+      h2 {
+        @apply font-semibold text-dark-100 text-sm md:text-lg line-clamp-2;
+      }
+      figure {
+        @apply flex items-center gap-2;
+        figCaption {
+          @apply font-normal text-gray-100 text-xs md:text-sm;
+        }
+      }
+    }
+  }
+  .link-logo {
+    @apply flex items-center gap-1.5 py-10 border-b border-light-100;
+    h1 {
+      @apply font-bold text-dark-100 text-base md:text-2xl;
+    }
+  }
+  .nav-footer {
+    @apply flex items-center gap-2.5 pb-8;
+    img {
+      @apply rounded-full size-10 aspect-square;
+    }
+    article {
+      @apply flex flex-col gap-[2px] max-w-[115px];
+      h2 {
+        @apply font-semibold text-dark-200 text-sm md:text-base truncate;
+      }
+      p {
+        @apply font-normal text-gray-100 text-xs md:text-sm truncate;
+      }
+    }
+  }
+  .mobile-sidebar {
+    @apply lg:hidden flex flex-col gap-5;
+    header {
+      @apply flex justify-between items-center border-b border-light-100;
+      h1 {
+        @apply font-bold text-dark-100 text-base md:text-2xl;
+      }
+      a {
+        @apply flex items-center gap-1.5 py-10;
+      }
+    }
+  }
+  .root-nav {
+    @apply flex justify-between items-center gap-4;
+    a {
+      @apply flex items-center gap-1.5 py-10;
+      h1 {
+        @apply font-bold text-dark-100 text-base md:text-2xl;
+      }
+    }
+    aside {
+      @apply flex items-center gap-4;
+      img {
+        @apply rounded-full size-10 aspect-square;
+      }
+    }
+  }
+  .footer-container {
+    @apply flex justify-between items-center gap-5 h-full;
+    a {
+      @apply flex items-center gap-1.5 py-10;
+      h1 {
+        @apply font-bold text-dark-100 text-base md:text-2xl;
+      }
+    }
+    div {
+      @apply flex items-center gap-2 sm:gap-5;
+      a {
+        @apply font-normal text-gray-100 text-sm md:text-base;
+      }
+    }
+  }
+  .header {
+    @apply flex md:flex-row flex-col justify-between gap-5 w-full;
+    article {
+      @apply flex flex-col gap-3.5 w-full;
+    }
+  }
+  .nav-items {
+    @apply flex flex-col px-6 h-full;
+    .container {
+      @apply flex flex-col justify-between h-full;
+      nav {
+        @apply flex flex-col gap-3.5 pt-9;
+      }
+    }
+  }
+
+  .admin-layout {
+    @apply flex lg:flex-row flex-col w-full h-screen;
+    .children {
+      @apply bg-light-200 pt-12 lg:pt-10 w-full h-full;
+    }
+  }
+  .user-trip {
+    @apply flex lg:flex-row flex-col justify-between gap-5 pb-20;
+  }
+
+  .status-column {
+    @apply flex justify-center items-center gap-1 py-[2px] rounded-2xl w-[65px] mix-blend-multiply;
+  }
+
+  .dashboard {
+    @apply flex flex-col gap-10 pb-20 w-full;
+
+    .container {
+      @apply flex flex-col gap-5 mt-2.5;
+      h1 {
+        @apply font-semibold text-dark-100 text-xl;
+      }
+    }
+  }
+  .featured-card {
+    @apply flex flex-col justify-between gap-3.5 p-[30px] h-full min-h-[230px];
+  }
+  .featured {
+    @apply flex md:flex-row flex-col gap-[30px];
+    article {
+      @apply flex flex-col gap-[30px] w-full;
+    }
+  }
+}
+
+@layer utilities {
+  .wrapper {
+    @apply mx-auto px-4 lg:px-8 w-full max-w-7xl;
+  }
+  .wrapper-md {
+    @apply mx-auto px-4 lg:px-8 w-full max-w-3xl;
+  }
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+  .p-72-bold {
+    @apply font-bold text-5xl md:text-7xl;
+  }
+  .p-40-semibold {
+    @apply font-semibold md:text-[40px] text-3xl md:leading-[44px];
+  }
+
+  .p-30-bold {
+    @apply font-bold text-2xl md:text-3xl;
+  }
+  .p-28-bold {
+    @apply font-bold text-[20px] md:text-[28px] leading-[16px] md:leading-[20px];
+  }
+  .p-28-semibold {
+    @apply font-semibold text-[20px] md:text-[28px] text-2xl leading-[16px] md:leading-[20px];
+  }
+  .p-24-semibold {
+    @apply font-semibold text-lg md:text-2xl;
+  }
+  .p-20-semibold {
+    @apply font-semibold md:text-[20xp] text-base md:leading-7;
+  }
+  .p-18-bold {
+    @apply font-bold text-[14px] md:text-[18px] leading-[14px] md:leading-[16px];
+  }
+  .p-18-semibold {
+    @apply font-semibold text-[14px] md:text-[18px] leading-[14px] md:leading-[16px];
+  }
+  .p-18-regular {
+    @apply font-normal text-[14px] md:text-[18px] leading-[14px] md:leading-[16px];
+  }
+  .p-16-semibold {
+    @apply font-semibold text-sm md:text-base;
+  }
+  .button-class {
+    @apply !flex !justify-center !items-center !gap-1.5 !bg-primary-100 !shadow-none !px-4 !rounded-lg;
+  }
+  .button-class-secondary {
+    @apply !flex !justify-center !items-center !gap-1.5 !bg-white !shadow-sm !px-4 !rounded-lg;
+  }
+  .form-label {
+    @apply font-normal text-gray-100 text-sm;
+  }
+  .form-input {
+    @apply p-3.5 border border-light-400 rounded-xl font-normal text-dark-300 text-base;
+  }
+  .comboBox-popup {
+    @apply top-24 z-10 absolute bg-white shadow-200 border border-gray-200 rounded-xl w-full md:max-w-[660px] h-[250px] overflow-hidden;
+  }
+  .tripCard-pill {
+    @apply top-2.5 right-4 absolute bg-white px-2.5 py-1 rounded-[20px] w-fit font-semibold text-dark-100 text-sm;
+  }
+  .price-pill {
+    @apply top-2.5 right-4 bg-white px-2.5 py-0.5 rounded-[20px] w-fit font-semibold text-dark-100 text-sm;
+  }
+  .trip-grid {
+    @apply gap-7 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4;
+  }
+  .nav-item {
+    @apply flex items-center gap-2.5 hover:bg-primary-100 px-3.5 py-[18px] rounded-lg font-normal text-dark-200 hover:text-white text-xs md:text-lg cursor-pointer;
+  }
+  .combo-box {
+    @apply !p-3.5 !border !border-light-400 !rounded-xl w-full !font-normal !text-dark-300 !text-base;
+  }
+}
+
+html,
+body {
+  font-family: "Figtree", sans-serif;
+  background-color: #f9fbfc;
+  scroll-behavior: smooth;
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* ======== css overrides for syncfusion ========= */
+.e-grid,
+.e-table {
+  border-color: #eef9ff !important;
+}
+
+.e-control {
+  border-radius: 12px !important;
+}
+
+.e-grid .e-gridheader {
+  border-color: #eef9ff !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.e-grid .e-row:nth-child(odd) {
+  background-color: #f9fbfc;
+}
+
+.e-grid .e-rowcell {
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+}
+
+.e-sidebar.e-left {
+  border-right: 1px solid #ecf2ef;
+}
+.e-btn,
+.e-css.e-btn {
+  text-transform: none;
+}
+.e-dropdown-btn {
+  border-radius: 6px;
+  border: 1px solid #f0fef9;
+  background: #ffffff;
+  box-shadow: 0px 0px 3px 0px rgba(16, 24, 40, 0.1),
+    0px 0px 2px 0px rgba(16, 24, 40, 0.06);
+  height: 40px;
+}
+
+.e-dropdown-popup ul {
+  border-radius: 8px;
+  border: 1px solid #eaecf0;
+  background: #fff;
+  box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.1),
+    0px 4px 20px -2px rgba(16, 24, 40, 0.2);
+}
+.e-dropdown-popup ul .e-item {
+  padding-left: 36px;
+  padding-right: 36px;
+}
+/* e-input-group-icon e-ddl-icon e-search-icon */
+
+.e-input-group-icon {
+  position: absolute;
+  top: 45px;
+  right: 40px;
+}
