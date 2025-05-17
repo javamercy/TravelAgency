@@ -1,13 +1,21 @@
 import { Header, StatsCard, TripCard } from "components";
+import { redirect } from "react-router";
+import { getUser } from "~/appwrite/auth";
+import { account } from "~/appwrite/client";
 import { dashboardStats, user, allTrips } from "~/constants";
+import type { Route } from "./+types/admin-layout";
+
+export const clientLoader = async () => getUser();
 
 const { totalUsers, usersJoined, totalTrips, tripsCreated, userRole } =
   dashboardStats;
-export default function Dashboard() {
+export default function Dashboard({ loaderData }: Route.ComponentProps) {
+  const user = loaderData as User | null;
+
   return (
     <main className="dashboard wrapper">
       <Header
-        title={`Welcome ${user?.name || "Guest"} 👻`}
+        title={`Welcome ${user?.firstName} ${user?.lastName} 👻`}
         description="Track activity, trends and popular destinations in real time"
       />
       <section className="flex flex-col gap-6">

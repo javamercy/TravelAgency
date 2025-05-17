@@ -8,6 +8,7 @@ export async function loginWithGoogle() {
     console.error("Error during Google login:", error);
   }
 }
+
 export async function logout() {
   try {
     await account.deleteSession("current");
@@ -16,6 +17,7 @@ export async function logout() {
     console.error(error);
   }
 }
+
 export async function getGooglePicture() {
   try {
     const session = await account.getSession("current");
@@ -56,6 +58,7 @@ export async function addUser() {
     if (!user) {
       throw new Error("User not found");
     }
+    debugger;
     const { documents } = await database.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.usersCollectionId,
@@ -72,9 +75,10 @@ export async function addUser() {
     const newUser = {
       id: user.$id,
       firstName: user.name.split(" ")[0],
-      lastName: user.name.split(" ")[-1],
+      lastName: user.name.split(" ")[1],
       email: user.email,
       imageUrl: imageUrl,
+      status: "user",
       createdDate: new Date().toLocaleString(),
     };
 
@@ -91,22 +95,19 @@ export async function addUser() {
     return null;
   }
 }
-export async function getExistingUser() {
+
+export async function getUser(id?: string) {
   try {
     const user = await account.get();
-    if (!user) return null;
+    if (!user.$id) return null;
 
     const { documents } = await database.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.usersCollectionId,
-      [Query.equal("id", user.$id)]
+      [Query.equal("id", id ?? user.$id)]
     );
 
-    if (documents.length > 0) {
-      return documents[0];
-    } else {
-      return null;
-    }
+    return documents.length > 0 ? documents[0] : null;
   } catch (error) {
     console.error(error);
     return null;

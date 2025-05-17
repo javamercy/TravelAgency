@@ -1,8 +1,9 @@
 declare interface BaseUser {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  dateJoined: string;
+  createdDate: string;
   imageUrl: string;
 }
 
