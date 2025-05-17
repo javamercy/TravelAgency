@@ -113,3 +113,18 @@ export async function getUser(id?: string) {
     return null;
   }
 }
+
+export async function getAllUsers(limit: number = 10, offset: number = 0) {
+  try {
+    const { documents: users, total } = await database.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.usersCollectionId,
+      [Query.limit(limit), Query.offset(offset)]
+    );
+
+    return total > 0 ? users : [];
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
