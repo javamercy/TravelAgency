@@ -7,7 +7,6 @@ import { addUser, getUser, logout } from "~/appwrite/auth";
 export async function clientLoader() {
   try {
     const user = await account.get();
-    console.log("user", user);
 
     const existingUser = await getUser(user.$id);
     return existingUser?.$id ? existingUser : await addUser();

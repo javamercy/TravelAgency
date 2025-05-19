@@ -1,11 +1,14 @@
+import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { cn } from "lib/utils";
-import { useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
 
 interface Props {
   title: string;
   description: string;
+  ctaText?: string;
+  ctaUrl?: string;
 }
-export default function Header({ title, description }: Props) {
+export default function Header({ title, description, ctaText, ctaUrl }: Props) {
   const location = useLocation();
   return (
     <header className="header">
@@ -31,6 +34,17 @@ export default function Header({ title, description }: Props) {
           {description}
         </p>
       </article>
+      {ctaText && ctaUrl && (
+        <Link to={ctaUrl}>
+          <ButtonComponent
+            type="button"
+            className="!w-full md:w-[240px] !h-11 button-class"
+          >
+            <img src="/assets/icons/plus.svg" alt="plus" className="size-5" />
+            <span className="text-white p16-semibold">{ctaText}</span>
+          </ButtonComponent>
+        </Link>
+      )}
     </header>
   );
 }
